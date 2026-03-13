@@ -72,7 +72,7 @@ public class Book_My_StayApp {
     }
 
     // -----------------------------
-    // Use Case 5: Booking Queue (FIFO)
+    // Use Case 5: Booking Request Queue
     // -----------------------------
     public static void runUseCase5() {
 
@@ -80,9 +80,13 @@ public class Book_My_StayApp {
 
         BookingRequestQueue bookingQueue = new BookingRequestQueue();
 
-        bookingQueue.addRequest(new Reservation("Abhi", "Single"));
-        bookingQueue.addRequest(new Reservation("Subha", "Double"));
-        bookingQueue.addRequest(new Reservation("Vanmathi", "Suite"));
+        Reservation r1 = new Reservation("Abhi", "Single");
+        Reservation r2 = new Reservation("Subha", "Double");
+        Reservation r3 = new Reservation("Vanmathi", "Suite");
+
+        bookingQueue.addRequest(r1);
+        bookingQueue.addRequest(r2);
+        bookingQueue.addRequest(r3);
 
         while (bookingQueue.hasPendingRequests()) {
 
