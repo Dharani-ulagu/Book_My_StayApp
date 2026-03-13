@@ -10,6 +10,7 @@ public class Book_My_StayApp {
         runUseCase3();
         runUseCase4();
         runUseCase5();
+        runUseCase6();
     }
 
     // -----------------------------
@@ -101,5 +102,26 @@ public class Book_My_StayApp {
         }
 
         System.out.println();
+    }
+    public static void runUseCase6() {
+
+        System.out.println("\nUse Case 6: Room Allocation Processing");
+
+        RoomInventory inventory = new RoomInventory();
+
+        BookingRequestQueue bookingQueue = new BookingRequestQueue();
+
+        bookingQueue.addRequest(new Reservation("Abhi", "Single"));
+        bookingQueue.addRequest(new Reservation("Subha", "Single"));
+        bookingQueue.addRequest(new Reservation("Vanmathi", "Suite"));
+
+        RoomAllocationService allocationService = new RoomAllocationService();
+
+        while (bookingQueue.hasPendingRequests()) {
+
+            Reservation reservation = bookingQueue.getNextRequest();
+
+            allocationService.allocateRoom(reservation, inventory);
+        }
     }
 }
